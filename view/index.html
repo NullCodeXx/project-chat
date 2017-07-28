@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <title>Chat - Clone Slack - Bootstrap</title>
+    <style>
+        .div02 {
+            height: 10vh;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body class="container ">
+    <h1 class="text-center">CLONE SLACK</h1>
+    <div class="row mt-5 justify-content-md-center">  <!-- Centre -->
+        <div class="row col-md-8 mt-3 div02" ></div> <!-- largeur de 8 + marge de 3 + class css -->
+        <form class="row col-md-8" action="../controler/chat.php" method="POST" >
+            <h5>Envoyer un message</h5>
+            <textarea class="form-control" name="text" id="text" cols="30" rows="10" placeholder="@ Ecrivez votre contenue"></textarea> <!-- form -->
+            <input class="btn btn-primary" type="submit" value="send" id="btnSend" /> <!-- Button -->
+        </form>   
+    </div>
+            
+    <script>            
+    //Recup data in textarea.
+    let regroup = document.querySelector("#btnSend")
+        .addEventListener("click", function(e) {
+        e.preventDefault();
+        let text = document.querySelector("#text").value;        
+        console.log("Text que je récupère : " + text);
+        //recuper value input.
+        // let input = document.querySelector("#btnSend");
+        // console.log(input.value);
+    
+
+    //Envoyer tout sa au serveur AJAX.
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "../controler/chat.php", true); //Pour dire que c'est asynchrum
+    xhr.onreadystatechange = function() { //situation de la requete.
+        //si la situation est = a la requete effectuer.
+        /*
+        0 (non initialisée) ou (requête non initialisée)
+        1 (en cours de chargement) ou (connexion établie avec le serveur)
+        2 (chargée) ou (requête reçue)
+        3 (en cours d’interaction) ou (traitement de la requête)
+        4 (terminée) ou (requête est terminée et la réponse est prête)
+        */
+        if(xhr.readyState === XMLHttpRequest.DONE)
+
+        {
+            if(xhr.status === 200) {
+                console.log("sucess :" + xhr.responseText);
+            }else{
+                console.error("error :" + xhr.status);
+                console.log(xhr.response);
+            }
+        }
+    }
+    //On précise le type de ce que on envoie a php.
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send("text" + text);
+});
+    </script>
+</body>
+</html>
