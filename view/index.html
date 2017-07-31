@@ -9,7 +9,7 @@
     <title>Chat - Clone Slack - Bootstrap</title>
     <style>
         .div02 {
-            height: 10vh;
+            height: 50vh;
             background-color: lightgray;
             overflow: scroll;
         }
@@ -23,7 +23,7 @@
         <div class="div02 row col-md-8 mt-3" ></div> <!-- largeur de 8 + marge de 3 + class css -->
         <form class="row col-md-8" action="../controler/chat.php" method="POST" >
             <h5>Envoyer un message</h5>
-            <textarea class="form-control" name="text" id="text" cols="30" rows="10" placeholder="@ Ecrivez votre contenue"></textarea> <!-- form -->
+            <textarea class="form-control" name="text" id="text" cols="30" rows="1" placeholder="@ Ecrivez votre contenue"></textarea> <!-- form -->
             <input class="btn btn-primary" type="submit" value="send" id="btnSend" /> <!-- Button -->
         </form>   
     </div>
@@ -32,7 +32,7 @@
     "use Strict";
 
     //Tableau pour tester (fausse donnée) et plus tard les donné seront recup du serveur.
-    let message = ["coucou", 1234]
+    let message = ["Ajouter du contenus", "Encore du contenus..."]
 
     function display() {
         let div = document.querySelector(".div02");
