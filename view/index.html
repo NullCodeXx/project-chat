@@ -17,7 +17,7 @@
 <body class="container ">
     <h1 class="text-center">CLONE SLACK</h1>
     <div class="row mt-5 justify-content-md-center">  <!-- Centre -->
-        <div class="row col-md-8 mt-3 div02" ></div> <!-- largeur de 8 + marge de 3 + class css -->
+        <div class="div02 row col-md-8 mt-3" ></div> <!-- largeur de 8 + marge de 3 + class css -->
         <form class="row col-md-8" action="../controler/chat.php" method="POST" >
             <h5>Envoyer un message</h5>
             <textarea class="form-control" name="text" id="text" cols="30" rows="10" placeholder="@ Ecrivez votre contenue"></textarea> <!-- form -->
@@ -25,7 +25,26 @@
         </form>   
     </div>
             
-    <script>            
+    <script>    
+    "use Strict";
+
+    //Tableau pour tester (fausse donnée) et plus tard les donné seront recup du serveur.
+    let message = ["coucou", 1234]
+
+    function display() {
+        let div = document.querySelector(".div02");
+        //Pour écraser suprimer toutes les ancienne données .
+        div.innerHTML = "";
+        //La boucle for of est l'équivalent du foreach en php.
+        for( let m of message) {
+            let p = document.createElement('p');
+            p.classList.add("col-md-12");
+            p.textContent += m ;
+            div.appendChild(p);
+        }
+    }
+    display();
+
     //Recup data in textarea.
     let regroup = document.querySelector("#btnSend")
         .addEventListener("click", function(e) {
@@ -54,6 +73,9 @@
         {
             if(xhr.status === 200) {
                 console.log("sucess :" + xhr.responseText);
+                //Pour le display mettre a jour.
+                message.push(text);
+                display();
             }else{
                 console.error("error :" + xhr.status);
                 console.log(xhr.response);
@@ -64,6 +86,13 @@
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     xhr.send("text" + text);
 });
+
+//Function display.
+// function display() {
+//     let tableau = [];
+//     let message = document.querySelector(".display");
+//     message.textContent = xhr.text;
+// }
     </script>
 </body>
 </html>
