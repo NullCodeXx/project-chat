@@ -87,8 +87,16 @@
     }
     //On précise le type de ce que on envoie a php.
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    xhr.send("text" + text);
+    xhr.send("text=" + text);
 });
+
+setInterval(function() {
+    //Faire une requete. 
+    //instancier xhr.
+    //succes json = json.parse(xhr.response);
+    //return un tab
+}, 1000);
+
 
 //Function display.
 // function display() {
