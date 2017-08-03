@@ -9,13 +9,15 @@ if(empty($_POST["text"])) {
     //Quitte ici / sort de cette function.
     exit(1);
 }
-//Pour envoyer a SQL.
-include_once "../modele/database.php";
-$db = new Data();
 
 //Récup post de ajax.
 $textarea = $_POST["text"];
 
-$db->sendToSQL($textarea);
 
+//Pour envoyer a SQL.
+include_once "../modele/Data.php";
+$db = new Data();
+//Récup function de la Class Data.php
+$db->sendToSQL($textarea);
+$db->seekFromSQL();
 ?> 
