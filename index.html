@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,23 +13,26 @@
             background-color: lightgray;
             overflow: scroll;
         }
-
-
     </style>
 </head>
+
 <body class="container ">
     <h1 class="text-center">CLONE SLACK</h1>
-    <div class="row mt-5 justify-content-md-center">  <!-- Centre -->
-        <div class="div02 row col-md-8 mt-3" ></div> <!-- largeur de 8 + marge de 3 + class css -->
-        <form class="row col-md-8" action="../controler/chat.php" method="POST" >
+    <div class="row mt-5 justify-content-md-center">
+        <!-- Centre -->
+        <div class="div02 row col-md-8 mt-3"></div>
+        <!-- largeur de 8 + marge de 3 + class css -->
+        <form class="row col-md-8" action="./controler/chat.php" method="POST">
             <h5>Envoyer un message</h5>
-            <textarea class="form-control" name="text" id="text" cols="30" rows="1" placeholder="@ Ecrivez votre contenue"></textarea> <!-- form -->
-            <input class="btn btn-primary" type="submit" value="send" id="btnSend" /> <!-- Button -->
-        </form>   
+            <textarea class="form-control" name="text" id="text" cols="30" rows="1" placeholder="@ Ecrivez votre contenue"></textarea>
+            <!-- form -->
+            <input class="btn btn-primary" type="submit" value="send" id="btnSend" />
+            <!-- Button -->
+        </form>
     </div>
-    <script src="../script/script.js"></script>
-    <script>    
-
+    <script src="./script/script.js"></script>
+    <script>
     </script>
 </body>
+
 </html>
