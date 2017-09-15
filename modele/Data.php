@@ -35,5 +35,32 @@ Class Data{
         //retourne notre tableau json.
         return $json;
     }
+
+    //Refresh data coté client.
+    function interval() {
+        //Faire une requete. 
+    //instancier xhr.
+    //succes json = json.parse(xhr.response);
+    //return un tab
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "../controler/chat.php", true);
+    xhr.onreadystatechange = function() { 
+        if(xhr.readyState === XMLHttpRequest.DONE)
+        {
+            if(xhr.status === 200) {
+                console.log("sucess  (a voir ligne78):" + xhr.responseText);
+                //Pour le display mettre a jour.
+                let json = json.parse(xhr.response);
+                return json;
+            }else{
+                console.error("error :" + xhr.status);
+                console.log(xhr.response);
+            }
+        }
+    }
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    xhr.send("text=" + text);
+    }
 }
+
 ?>

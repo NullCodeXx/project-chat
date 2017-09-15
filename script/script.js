@@ -1,6 +1,5 @@
 console.log("fichier script.js charger");
 
-
     "use Strict";
 
     //Tableau pour tester (fausse donnée) et plus tard les donné seront recup du serveur.
@@ -19,7 +18,6 @@ console.log("fichier script.js charger");
         }
     }
     
-
     //Recup data in textarea.
     let regroup = document.querySelector("#btnSend")
         .addEventListener("click", function(e) {
